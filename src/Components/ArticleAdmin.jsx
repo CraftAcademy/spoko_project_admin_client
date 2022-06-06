@@ -1,8 +1,23 @@
 import React, { useState } from 'react'
+import {
+  Form,
+  Input,
+  TextArea,
+  Button,
+  Select,
+  Dropdown,
+} from 'semantic-ui-react'
 import Articles from '../Modules/Articles'
 
 const ArticleAdmin = ({ onCreateMessage }) => {
   const [article, setArticle] = useState({})
+
+  const categoryOptions = [
+    { key: 'f', text: 'Football', value: 'football' },
+    { key: 't', text: 'Tennis', value: 'tennis' },
+    { key: 'g', text: 'Golf', value: 'golf' },
+    { key: 'c', text: 'Cricket', value: 'cricket' },
+  ]
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -18,50 +33,30 @@ const ArticleAdmin = ({ onCreateMessage }) => {
   }
 
   return (
-    <>
-      <div data-cy="articles-header">Articles</div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label data-cy="title-label">
-              Title<br></br>
-              <input
-                name="title"
-                type="text"
-                data-cy="title-input"
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label data-cy="body-label">
-              Article body<br></br>
-              <textarea
-                name="body"
-                data-cy="body-input"
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-
-          <div>
-            <select
-              data-cy="category-select"
-              name="category"
-              onChange={handleChange}
-            >
-              <option value="">--select category--</option>
-              <option value="Football">Football</option>
-              <option value="Tennis">Tennis</option>
-              <option value="Golf">Golf</option>
-              <option value="Cricket">Cricket</option>
-            </select>
-          </div>
-          <button data-cy="submit-button">Submit</button>
-        </form>
-      </div>
-    </>
+    <Form onSubmit={handleSubmit}>
+      <Form.Input
+        data-cy="title-input"
+        label="Title"
+        placeholder="Your Title"
+        onChange={handleChange}
+      />
+      <Form.TextArea
+        data-cy="body-label"
+        label="Article Body"
+        placeholder="Put your article body here"
+        onChange={handleChange}
+      />
+      <Dropdown
+        data-cy="category-select"
+        placeholder="Select Category"
+        fluid
+        select
+        options={categoryOptions}
+        onChange={handleChange}
+      />
+      <Form.Checkbox label="I agree to the Terms and Conditions" />
+      <Form.Button>Submit</Form.Button>
+    </Form>
   )
 }
 
