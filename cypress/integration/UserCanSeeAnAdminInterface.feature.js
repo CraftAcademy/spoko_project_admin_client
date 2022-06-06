@@ -1,8 +1,5 @@
 describe('User can see an web page which navigates administrator actions', () => {
   beforeEach(() => {
-    //   cy.intercept('GET', '**/articles', {
-    //     fixture: 'articles.json',
-    //   }).as('getArticles')
     cy.visit('/')
   })
 
@@ -27,7 +24,7 @@ describe('User can see an web page which navigates administrator actions', () =>
       .and('be.visible')
   })
 
-  it('is expected to display Article Boby text area', () => {
+  it('is expected to display Article Body text area', () => {
     cy.get('[data-cy=body-input]').should('be.visible')
   })
 

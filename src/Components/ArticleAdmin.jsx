@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import Articles from "../Modules/Articles";
-
+import Articles from '../Modules/Articles'
 
 const ArticleAdmin = ({ onCreateMessage }) => {
   const [article, setArticle] = useState({})
@@ -53,10 +52,10 @@ const ArticleAdmin = ({ onCreateMessage }) => {
               onChange={handleChange}
             >
               <option value="">--select category--</option>
-              <option value="News">News</option>
-              <option value="Politics">Politics</option>
-              <option value="Economy">Economy</option>
-              <option value="Sports">Sports</option>
+              <option value="Football">Football</option>
+              <option value="Tennis">Tennis</option>
+              <option value="Golf">Golf</option>
+              <option value="Cricket">Cricket</option>
             </select>
           </div>
           <button data-cy="submit-button">Submit</button>
